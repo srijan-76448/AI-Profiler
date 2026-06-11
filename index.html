@@ -3,175 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI POWERED RESUME PROFILER</title>
+    <title>CORE-OS MATRIX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div class="brand">
-          <div class="brand-icon">GEN</div>
-          <div>
-            <h1>AI POWERED RESUME PROFILER</h1>
-            <p>
-              Ingest system parameters to isolate optimal professional targets
-              and structural job requirements.
-            </p>
-          </div>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">GEN</div>
+        <span class="brand-title">CORE-OS</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="ai-profiler/index.html" class="nav-link">AI-Profiler</a>
+        <a href="contact-us/index.html" class="nav-link">Contact Dev</a>
+      </div>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle layout theme">🌙</button>
+    </nav>
+
+    <div class="content-viewport">
+      <div class="static-container">
+        <h2>Welcome to Career Core Matrix</h2>
+        <p>An automated diagnostic framework configured to analyze complex vector structures inside unstructured candidate datasets.</p>
+        <div style="margin-top: 24px;">
+          <a href="ai-profiler/index.html" class="btn btn-primary" style="text-decoration: none; display: inline-block;">Launch AI-Profiler Pipeline</a>
         </div>
-        <button
-          id="themeToggle"
-          class="theme-toggle"
-          aria-label="Toggle dark mode"
-        >
-          🌙
-        </button>
-      </header>
-
-      <main class="dashboard-grid">
-        <section class="panel panel-upload">
-          <div class="panel-header">
-            <h2>Input Control Matrix</h2>
-            <span class="tag">PDF Ingestion</span>
-          </div>
-          <div id="dropZone" class="upload-dropzone">
-            <div>
-              <p>Drag & drop resume PDF here</p>
-              <p>or</p>
-              <button id="browseBtn" class="btn btn-secondary">
-                Browse File
-              </button>
-            </div>
-            <input id="fileInput" type="file" accept=".pdf" hidden />
-          </div>
-          <div class="upload-info" id="uploadInfo">No file selected yet.</div>
-
-          <div class="action-row">
-            <button id="analyzeBtn" class="btn btn-primary">
-              Execute Profiler Pipeline
-            </button>
-            <button id="resetBtn" class="btn btn-muted">Reset Matrix</button>
-          </div>
-        </section>
-
-        <section class="panel panel-summary">
-          <div class="panel-header">
-            <h2>AI Career Path Analyzer</h2>
-            <span class="tag status">Algorithmic Match</span>
-          </div>
-
-          <div class="career-guidance-card">
-            <span class="card-meta">Optimal Role Fit Classification:</span>
-            <h3 id="recommendedSector">Awaiting Pipeline Execution...</h3>
-            <p id="strategicGuidance"></p>
-          </div>
-
-          <div class="metrics-grid" style="margin-top: 16px">
-            <div class="metric-card">
-              <span>Profile Vector Alignment</span>
-              <div class="score-circle" id="scoreCircle">
-                <span id="scoreValue">0</span><small>/100</small>
-              </div>
-            </div>
-            <div class="metric-card">
-              <span>Core Skill Coverage</span>
-              <div class="progress-block">
-                <div id="keywordPercent" class="progress-value">0%</div>
-                <div class="progress-bar"><span id="keywordBar"></span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="chart-wrapper">
-            <canvas id="skillsChart" aria-label="Skill match chart"></canvas>
-          </div>
-        </section>
-
-        <section class="panel panel-details">
-          <div class="panel-header">
-            <h2>Analysis Output Extraction</h2>
-            <span>Parsed Entity Arrays</span>
-          </div>
-
-          <div class="status-group">
-            <div class="status-card">
-              <h3>Extracted Identity Matrix</h3>
-              <p><strong>Email:</strong> <span id="out-email">-</span></p>
-              <p><strong>Phone:</strong> <span id="out-phone">-</span></p>
-            </div>
-          </div>
-
-          <div
-            class="requirements-reveal-panel"
-            style="
-              margin-bottom: 20px;
-              background: var(--surface-strong);
-              border: 1px solid var(--border);
-              padding: 16px;
-              border-radius: 4px;
-            "
-          >
-            <h3
-              style="
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                margin: 0 0 12px;
-                color: var(--primary);
-              "
-            >
-              AI Discovered Target Requirements
-            </h3>
-            <div
-              id="targetRequirementsList"
-              style="
-                font-size: 0.85rem;
-                line-height: 1.5;
-                color: var(--text-muted);
-              "
-            >
-              Awaiting profile metrics parsing...
-            </div>
-          </div>
-
-          <div class="keywords-panel">
-            <div>
-              <h3>Keywords Found In Profile</h3>
-              <div id="foundKeywords" class="keywords-list"></div>
-            </div>
-            <div>
-              <h3>Skills to Acquire for Target Role</h3>
-              <div id="missingKeywords" class="keywords-list missing"></div>
-            </div>
-          </div>
-
-          <div class="suggestions-panel">
-            <h3>AI Optimization Suggestions</h3>
-            <div class="suggestion-block" id="suggestionsBlock"></div>
-          </div>
-
-          <div class="report-actions">
-            <button id="downloadReport" class="btn btn-primary">
-              Download Report
-            </button>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <div id="loaderOverlay" class="loader-overlay hidden">
-      <div class="loader-card">
-        <div class="spinner"></div>
-        <p>Analyzing profile matrices and indexing career vectors...</p>
       </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-    <script src="index.js"></script>
+    <script>
+      const toggle = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      toggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+      toggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.textContent = next === 'dark' ? '🌙' : '☀️';
+      });
+    </script>
   </body>
 </html>
