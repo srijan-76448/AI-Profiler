@@ -1,51 +1,129 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CORE-OS MATRIX</title>
+    <title>CORE-OS CAREER HUB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <nav class="navbar">
       <div class="nav-brand">
-        <div class="brand-icon">GEN</div>
-        <span class="brand-title">CORE-OS</span>
+        <div class="brand-icon">AI</div>
+        <span class="brand-title">PROFILER</span>
       </div>
+
       <div class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
+        <a href="" class="nav-link active">Home</a>
         <a href="ai-profiler/index.html" class="nav-link">AI-Profiler</a>
+        <a href="ai-interviewer/index.html" class="nav-link">AI-Interviewer</a>
         <a href="contact-us/index.html" class="nav-link">Contact Dev</a>
       </div>
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle layout theme">🌙</button>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label="Toggle runtime theme"
+      >
+        🌙
+      </button>
     </nav>
 
-    <div class="content-viewport">
-      <div class="static-container">
-        <h2>Welcome to Career Core Matrix</h2>
-        <p>An automated diagnostic framework configured to analyze complex vector structures inside unstructured candidate datasets.</p>
-        <div style="margin-top: 24px;">
-          <a href="ai-profiler/index.html" class="btn btn-primary" style="text-decoration: none; display: inline-block;">Launch AI-Profiler Pipeline</a>
+    <div class="portal-container">
+      <aside class="filter-panel">
+        <div class="filter-section">
+          <h3>Search Pipeline</h3>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Filter by keyword or role..."
+          />
         </div>
-      </div>
+
+        <div class="filter-section">
+          <h3>Domain Cluster</h3>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                class="domain-filter"
+                value="Embedded Systems & Robotics"
+                checked
+              />
+              Embedded & Robotics
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                class="domain-filter"
+                value="Systems Engineering & GNU/Linux"
+                checked
+              />
+              Systems & GNU/Linux
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                class="domain-filter"
+                value="AI & Quantitative Engineering"
+                checked
+              />
+              AI & Quant
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Deployment Vector</h3>
+          <div class="checkbox-group">
+            <label class="checkbox-label"
+              ><input
+                type="checkbox"
+                class="type-filter"
+                value="Remote"
+                checked
+              />
+              Remote</label
+            >
+            <label class="checkbox-label"
+              ><input
+                type="checkbox"
+                class="type-filter"
+                value="On-Site"
+                checked
+              />
+              On-Site</label
+            >
+            <label class="checkbox-label"
+              ><input
+                type="checkbox"
+                class="type-filter"
+                value="Hybrid"
+                checked
+              />
+              Hybrid</label
+            >
+          </div>
+        </div>
+      </aside>
+
+      <main class="jobs-feed">
+        <div class="feed-header">
+          <div>
+            Active Nodes:
+            <span id="matchCounter" class="counter-tag">0 Available</span>
+          </div>
+        </div>
+        <div id="jobsContainer"></div>
+      </main>
     </div>
 
-    <script>
-      const toggle = document.getElementById('themeToggle');
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      toggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-
-      toggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        toggle.textContent = next === 'dark' ? '🌙' : '☀️';
-      });
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
