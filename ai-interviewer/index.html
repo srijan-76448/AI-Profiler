@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI INTERVIEW SYSTEM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script type="module">
+      import * as webllm from "https://esm.run/@webllm/libs-webllm";
+      window.webllm = webllm;
+    </script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">GEN</div>
+        <span class="brand-title">CORE-OS</span>
+      </div>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../ai-profiler/index.html" class="nav-link">AI-Profiler</a>
+        <a href="" class="nav-link active">AI-Interviewer</a>
+        <a href="../contact-us/index.html" class="nav-link">Contact Dev</a>
+      </div>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label="Toggle layout theme"
+      >
+        🌙
+      </button>
+    </nav>
+
+    <div class="content-viewport">
+      <div id="configStage" class="static-container">
+        <h2>Target CV Question Generator Pipeline</h2>
+        <p>
+          Drop your markdown or plaintext CV configuration block inside the
+          telemetry ingestion portal below to dynamically map specialized
+          verification nodes.
+        </p>
+
+        <div id="fileDropZone" class="upload-dropzone" style="margin-top: 20px">
+          <p>Drag & drop plaintext resume metadata file here</p>
+          <p>or</p>
+          <button
+            onclick="document.getElementById('cvFileInput').click()"
+            class="btn btn-primary"
+            style="margin-top: 8px"
+          >
+            Browse Local Data
+          </button>
+          <input id="cvFileInput" type="file" accept=".txt,.md,.json,.pdf,.doc,.docx" hidden />
+        </div>
+        <div
+          id="fileTrackInfo"
+          class="upload-info"
+          style="
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: var(--primary);
+          "
+        >
+          No telemetry matrix mapped yet.
+        </div>
+
+        <div style="margin-top: 24px; text-align: center">
+          <button
+            id="runPipelineBtn"
+            class="btn btn-primary"
+            style="width: 100%; max-width: 400px"
+            disabled
+          >
+            Compile Custom Screening Matrix
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="activeStage"
+        class="interview-grid hidden"
+        style="max-width: 800px; margin: 0 auto"
+      >
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Active Telemetry Verification</h2>
+            <span id="questionCountTag" class="tag">Question 1 of 0</span>
+          </div>
+          <div class="question-prompt-card">
+            <p id="questionPrompt">Resolving pipeline node questions...</p>
+          </div>
+          <div style="margin-top: 20px">
+            <textarea
+              id="responseFeedbackInput"
+              class="response-textarea"
+              placeholder="Inject structured technical explanations answering the prompt explicitly..."
+            ></textarea>
+            <div
+              style="display: flex; justify-content: flex-end; margin-top: 12px"
+            >
+              <button id="commitResponseBtn" class="btn btn-primary">
+                Commit Explanation Block
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="completeStage" class="interview-grid reporting-mode hidden">
+        <section class="panel">
+          <div class="panel-header"><h2>Diagnostic Analysis</h2></div>
+          <div id="reportTrackMeta" class="career-guidance-card"></div>
+          <div style="position: relative; height: 260px; margin-top: 20px">
+            <canvas id="reportMetricsChart"></canvas>
+          </div>
+          <button
+            id="reinitEngineBtn"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 20px"
+          >
+            Reinitialize Screening Portal
+          </button>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><h2>Response Tracking Records</h2></div>
+          <div
+            id="logResponseStream"
+            style="max-height: 500px; overflow-y: auto"
+          ></div>
+        </section>
+      </div>
+    </div>
+
+    <div id="loaderOverlay" class="loader-overlay hidden">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>
+          Parsing dataset indicators and building dynamic verification nodes...
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
