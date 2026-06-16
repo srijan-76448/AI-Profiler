@@ -230,8 +230,8 @@ export default function AIProfiler() {
       {/* INTEGRATED GLOBAL HORIZONTAL NAVBAR MATRIX */}
       <nav className="navbar">
         <div className="nav-brand">
-          <div className="brand-icon">AI</div>
-          <span className="brand-title">PROFILER</span>
+          <div className="brand-icon">JOB</div>
+          <span className="brand-title">AKINATOR</span>
         </div>
 
         <div className="nav-links">
