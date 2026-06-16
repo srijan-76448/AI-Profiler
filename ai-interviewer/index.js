@@ -13,7 +13,7 @@ themeToggle?.addEventListener("click", () => {
 });
 
 // Local WebLLM Engine Configuration
-const SELECTED_MODEL = "Gemma-2b-it-q4f16_1-MLC";
+const SELECTED_MODEL = "Qwen1.5-0.5B-Chat-q4f16_1-MLC";
 let llmEngine = null;
 let generatedQuestions = [];
 let currentQIndex = 0;
@@ -86,18 +86,18 @@ async function ParseCvAndGenerateQuestions() {
         "LLM analyzing CV parameters to build target engineering questions...";
 
       const prompt = `
-        You are an expert technical interviewer in low-level systems programming, embedded devices, and quantitative trading systems.
-        Analyze the following CV text and extract exactly 3 technical interview questions customized specifically to the candidate's core technologies, frameworks, or projects listed.
+        You are a low-level systems and automated trading systems technical interviewer.
+        Extract exactly 3 short technical questions based on this CV.
         
-        Return ONLY a raw, unformatted valid JSON array matching this exact specification. Do not include markdown code block syntax, trailing commas, or extra text wrapper objects:
+        Return ONLY a valid JSON array matching this specification:
         [
           {
-            "question": "The question string based on their unique tools",
-            "tokens": ["expected", "keyword", "tokens", "for", "grading"]
+            "question": "Question string here",
+            "tokens": ["keyword1", "keyword2"]
           }
         ]
 
-        Candidate CV Content Data:
+        CV Data:
         ${cvText}
       `;
 
@@ -249,9 +249,23 @@ function RenderEvaluationReport() {
 
 // Global Event Engine Setup
 runPipelineBtn?.addEventListener("click", ParseCvAndGenerateQuestions);
-document
-  .getElementById("commitResponseBtn")
-  ?.addEventListener("click", CommitExplanationBlock);
-document
-  .getElementById("reinitEngineBtn")
-  ?.addEventListener("click", () => location.reload());
+document.getElementById("commitResponseBtn")?.addEventListener("click", CommitExplanationBlock);
+
+// Optimized Re-initialization Loop (Preserves Loaded LLM Engine)
+document.getElementById("reinitEngineBtn")?.addEventListener("click", () => {
+  // Clear layout tracking vectors
+  generatedQuestions = [];
+  currentQIndex = 0;
+  sessionLog = [];
+  if (chartInstance) chartInstance.destroy();
+  
+  // Toggle UI viewport stages back to start
+  document.getElementById("completeStage").classList.add("hidden");
+  document.getElementById("configStage").classList.remove("hidden");
+  
+  // Reset file tracker state
+  window.selectedCvFile = null;
+  document.getElementById("fileTrackInfo").textContent = "No telemetry matrix mapped yet.";
+  runPipelineBtn.disabled = true;
+  document.getElementById("cvFileInput").value = "";
+});
